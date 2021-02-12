@@ -1,0 +1,88 @@
+# Мафия 0.3
+from random import randint
+
+gtg = True
+Unsolvedw = 0
+ll = False
+lll = False
+reputation = 50
+Double_money = True
+money = 20
+
+
+
+
+
+def razd():
+    print('-*-' * 100)
+
+
+def razdd():
+    print('---' * 100)
+
+
+
+print('Спасибо, что приехали в наш город')
+print('Нашему городу нехватает полицейских.')
+print('(Вы полицейский)')
+print('У вас есть репутация. Если репутация дойдёт до 0, то')
+print('вас выгонят.')
+print('У нас есть ещё денги. За них можно выкупить у связей номер бандита.')
+print('1000р. - 5 раз, 40000 - бесконечность раз, но деньги выдаются меньше')
+#razd()
+while gtg == True:
+    died = randint(1, 3)
+    if Unsolvedw == 0:
+        print('Ваш первый вызов!')
+        print(f'Ваша репутация = ', reputation)
+        print(f'У вас есть {money} $')
+    elif Unsolvedw != 0:
+        print('И ещё раз ваш вызов!')
+        print(f'Ваша репутация = {reputation}')
+        print(f'У вас есть  {money} $')
+    #razdd()
+    plormn = input('Нужно ли переходить в меню закупки +\- : ')
+    if plormn == '+':
+        ban = input('Нужно ли покупать за 1000 5 подсказок +\-: ')
+        # razdd()
+        if ban == '+':
+            if money >= 1000:
+                money -= 1000
+                ll = True
+                minu = 5
+            elif money <= 1000:
+                print('Нехватка денег')
+        bban = input('Нужно ли покупать за 40000 бесконечность подсказок +\-: ')
+        if bban == '+':
+            if money >= 9000:
+                money -= 9000
+                lll = True
+                Double_money = False
+            elif money <= 40000:
+                print('Нехватка денег')
+    plormn = '-'
+    if ll == True:
+        print('Убийца - ', died)
+        minu -= 1
+        if minu == 0:
+            ll = False
+    if lll == True:
+        print('Убийца - ', died)
+    #razdd()
+    who_died = int(input('Как вы думаете кто убийца (1|2|3): '))
+    if who_died == died:
+        print('Убийца найден')
+        if Double_money == True:
+            money += 100
+        Unsolvedw += 1
+        reputation += 10
+        if Double_money == False:
+            money += 50
+        reputation += 5
+    elif who_died != died:
+        print('Не угадали')
+        money += 10
+        Unsolvedw += 1
+        reputation -= 3
+        if reputation == 0:
+            gtg = False
