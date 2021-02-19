@@ -1,1 +1,34 @@
-bvjgvjykjvilvcfygvikjhgbiugj
+from random import randint
+money = 3000
+
+while True:
+    print('В первом уровне сложности выиграешь получишь 1000 проиграешь - 500')
+    print('Во втором уровне слогжности выиграешь получишь 2500 проиграешь - 1000')
+    print('У вас денег: ', money)
+    if money <= 0:
+            print('Вы проиграли все деньги')
+            break
+    level = int(input('Уровень сложности от 1 до 2: '))
+    if  level == 1:
+        koleso_money = randint(1, 2)
+        vibor = int(input('Ваш выбор от 1 до 2: '))
+        if vibor == koleso_money:
+            print('Вы угадали')
+            money += 1000
+            continue
+        elif vibor != koleso_money:
+            print('Не угадали: ')
+            money -= 500
+            continue
+    if level == 2:
+        koleso_money = randint(1, 3)
+        vibor = int(input('Ваш выбор от 1 до 3: '))
+        if vibor == koleso_money:
+            print('Вы угадали')
+            money += 2500
+            continue
+        elif vibor != koleso_money:
+            print('Не угадали: ')
+            money -= 1000
+            continue
+        
